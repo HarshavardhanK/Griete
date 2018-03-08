@@ -15,8 +15,9 @@ import os.log
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    var friend: Friends?
+    var friend: Friends!
     var databaseChildReferenceForChat: String = ""
+    var finalText: Message?
     
     
     // Declare instance variables here
@@ -28,8 +29,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +64,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let emailIndexWithoutEnding = email.index(email.endIndex, offsetBy: -10)
         let finalEmail = email.prefix(upTo: emailIndexWithoutEnding)
         print(finalEmail)
-        databaseChildReferenceForChat = (friend?.name)! + finalEmail
+        databaseChildReferenceForChat = friend.name + finalEmail
         print(databaseChildReferenceForChat)
+        
+        
 
     }
 
@@ -164,13 +165,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let minutes = calendar.component(.minute, from: date)
         
         let timeStamp = "\(hour):\(minutes)"
+        print(timeStamp)
         
         messageTextfield.isEnabled = false
         sendButton.isEnabled = false
         
-        let message = Message(sender: (Auth.auth().currentUser?.email)!, message: messageTextfield.text!, time:timeStamp)
+        let message = Message(sender: (Auth.auth().currentUser?.email)!, message: messageTextfield.text!, time: timeStamp)
 
-        let messagesDB = Database.database().reference().child((friend?.name)!)
+        let messagesDB = Database.database().reference().child(friend.name)
         let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!, "TimeStamp": timeStamp]
         
         messagesDB.childByAutoId().setValue(messageDictionary) {
@@ -183,9 +185,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-        friend?.messages.append(message)
-        save()
-        
         self.messageTextfield.isEnabled = true
         self.sendButton.isEnabled = true
         messageTextfield.text = ""
@@ -195,23 +194,27 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //TODO: Create the retrieveMessages method here:
     func retrieveMessages() {
         
-        let messagesDB = Database.database().reference().child((friend?.name)!)
+        let messagesDB = Database.database().reference().child(friend.name)
         //observe for event type child added
         messagesDB.observe(.childAdded) { (snapshot) in
             
             let snapshotValue = snapshot.value as! Dictionary<String, String>
             let text = snapshotValue["MessageBody"]!
             let sender = snapshotValue["Sender"]!
-            let timeStamp = snapshotValue["TimeStamp"] ?? "\(00):\(00)"
+            let timeStamp = snapshotValue["TimeStamp"] ?? "\(10):\(10)"
             
-            let message = Message(sender: sender, message: text, time:timeStamp)            
+            let message = Message(sender: sender, message: text, time: timeStamp)
             self.messages.append(message)
+            
+            self.finalText = self.messages[self.messages.count - 1]
+            print("Final text is", self.finalText)
             
             self.configureTableView()
             self.messageTableView.reloadData()
             
             print(text, sender)
         }
+        
     }
     
 
@@ -228,27 +231,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    //MARK: Save and load texts
-    private func save() {
-        
-        print("Saving..")
-        
-        let isSaved = NSKeyedArchiver.archiveRootObject(friend, toFile: Friends.archiveURL.path)
-        
-        if isSaved {
-            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save meals...", log: OSLog.default, type: .error)
-        }
-    }
     
-    private func loadTexts() -> [Message] {
-        
-        let friend = NSKeyedUnarchiver.unarchiveObject(withFile: Friends.archiveURL.path) as! Friends
-        let messages = friend.messages
-        
-        return messages
-        
-    }
+   
     
 }

@@ -292,7 +292,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpY-IA-acB" userLabel="Compose View">
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpY-IA-acB" userLabel="Compose View">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Message" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W4K-YF-skl">
@@ -351,6 +351,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Flash Chat" id="OGj-fw-WBv">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Cub-8Y-Mnm">
+                            <connections>
+                                <segue destination="xrP-fz-YYk" kind="unwind" unwindAction="unwindToChatListWithSender:" id="Fq2-Od-biT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="mz9-8w-6zi">
                             <connections>
                                 <action selector="logOutPressed:" destination="vXZ-lx-hvc" id="AiZ-zI-Rgo"/>
@@ -366,6 +371,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="xrP-fz-YYk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1180" y="12"/>
         </scene>

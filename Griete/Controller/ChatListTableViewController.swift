@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatListTableViewController: UITableViewController {
     
     var chats: [Friends] = [Friends]()
+    var chat: Friends?
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -21,7 +24,12 @@ class ChatListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.separatorStyle = .none
+        
         loadDummyData()
+        
+       
+        
+       // sortChatList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +55,7 @@ class ChatListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTableViewCell
         
         cell.nameLabel.text = chats[indexPath.row].name
-        cell.recentTextLabel.text = chats[indexPath.row].recentMessage
+        cell.recentTextLabel.text = chats[indexPath.row].recentMessage.messageBody
 
         return cell
     }
@@ -57,43 +65,30 @@ class ChatListTableViewController: UITableViewController {
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
+    
+    @IBAction func unwindToChatList(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? ChatViewController {
+            
+            let recentMessage = sourceViewController.finalText
+            chat = sourceViewController.friend
+            chat?.recentMessage = recentMessage
+           // print("unwound!")
+            print(recentMessage?.messageBody)
+            
+            if let friend = chat {
+               // print("whats happening?")
+                modifyForChatFriend(friend: friend)
+                
+            } else {
+                print("Not working")
+            }
+            
+            sortChatList()
+            
+        }
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,11 +106,68 @@ class ChatListTableViewController: UITableViewController {
     
     func loadDummyData() {
         
-        chats.append(Friends(name: "Ramathmika"))
-        chats.append(Friends(name: "Mark Zuckerberg"))
-        chats.append(Friends(name: "Rachel"))
+        let rum = Friends(name: "Ramathmika")
+        rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45")
+        let mark = Friends(name: "Mark Zuckerberg")
+        mark.recentMessage = Message(sender: "Harsha", message: "Hey", time: "13:45")
+        let roop = Friends(name: "Roopali")
+        roop.recentMessage = Message(sender: "Roopali", message: "Hey there", time: "09:45")
+        
+        chats.append(rum)
+        chats.append(mark)
+        chats.append(roop)
     
         
     }
-
+    
+    private func sortChatList() {
+       
+         chats.sort(by: { (f1: Friends, f2: Friends) -> Bool in
+            
+            let time1 = parseTimeStamp(timeStamp: f1.recentMessage.timeStamp)
+            let time2 = parseTimeStamp(timeStamp: f2.recentMessage.timeStamp)
+            print(time1, time2)
+            
+            return time1 < time2
+        })
+        
+        for chat in chats {
+            print(chat.name)
+        }
+        
+     }
+    
+    private func parseTimeStamp(timeStamp: String) -> Int {
+        
+        let arr = Array(timeStamp)
+        let minutes = String(arr[3...arr.count-1])
+        let hours = String(arr[0...1])
+        let timeString = hours + minutes
+        let time = Int(timeString)
+        
+        return time!
+    }
+    
+     func modifyForChatFriend(friend: Friends)  {
+        
+        var index = 0
+        
+        for i in 0..<chats.count {
+            if chats[i].name == friend.name {
+                index = i
+                
+            }
+            
+        }
+        
+       // print(index)
+        chats[index] = friend
+       // print(chats[index].recentMessage.messageBody)
+        tableView.reloadData()
+    }
 }
+
+
+
+
+

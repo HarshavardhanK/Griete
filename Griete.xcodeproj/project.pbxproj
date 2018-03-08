@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		322EFF0F630B40B9A5F2895D /* Pods_Griete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BDDCD66CCEB1986B2DFE1E /* Pods_Griete.framework */; };
 		D33BE2FE746CC09E961EE717 /* Pods_GrieteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB43E51D18D48A2EBC76D7AB /* Pods_GrieteUITests.framework */; };
 		D693EE1B205168FC00C16B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE1A205168FC00C16B8A /* AppDelegate.swift */; };
 		D693EE1D205168FC00C16B8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE1C205168FC00C16B8A /* ViewController.swift */; };
-		D693EE22205168FC00C16B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D693EE21205168FC00C16B8A /* Assets.xcassets */; };
 		D693EE25205168FC00C16B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693EE23205168FC00C16B8A /* LaunchScreen.storyboard */; };
 		D693EE30205168FD00C16B8A /* GrieteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE2F205168FD00C16B8A /* GrieteTests.swift */; };
 		D693EE3B205168FD00C16B8A /* GrieteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE3A205168FD00C16B8A /* GrieteUITests.swift */; };
@@ -41,6 +39,8 @@
 		D693EE6E20516C6700C16B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693EE6C20516C6700C16B8A /* Main.storyboard */; };
 		D693EE7020516CC800C16B8A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D693EE6F20516CC700C16B8A /* Images.xcassets */; };
 		D693EE7120516CC800C16B8A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D693EE6F20516CC700C16B8A /* Images.xcassets */; };
+		D693EE7E2051B5A100C16B8A /* Pods_Griete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D693EE7F2051B5A100C16B8A /* Pods_Griete.framework */; };
+		D693EE842051B70B00C16B8A /* ChameleonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D693EE852051B70B00C16B8A /* ChameleonFramework.framework */; };
 		F0C156A94BF3C6D5AF744EB2 /* Pods_GrieteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D20D1EE6C5391F8C09BB06 /* Pods_GrieteTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +61,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D693EE832051B65F00C16B8A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		114A9207CFBF3D6AD13B8870 /* Pods-GrieteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrieteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GrieteTests/Pods-GrieteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D9DF951336B094B60ECFEA5 /* Pods-GrieteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrieteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GrieteUITests/Pods-GrieteUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +83,6 @@
 		D693EE17205168FC00C16B8A /* Griete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Griete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D693EE1A205168FC00C16B8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D693EE1C205168FC00C16B8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D693EE21205168FC00C16B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D693EE24205168FC00C16B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D693EE26205168FC00C16B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D693EE2B205168FD00C16B8A /* GrieteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrieteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +104,8 @@
 		D693EE6920516C5100C16B8A /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D693EE6C20516C6700C16B8A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D693EE6F20516CC700C16B8A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D693EE7F2051B5A100C16B8A /* Pods_Griete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Griete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D693EE852051B70B00C16B8A /* ChameleonFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ChameleonFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93A06FF766D7237DC71FCF3 /* Pods-GrieteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrieteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GrieteTests/Pods-GrieteTests.release.xcconfig"; sourceTree = "<group>"; };
 		E4D20D1EE6C5391F8C09BB06 /* Pods_GrieteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrieteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32299E690DC6D93080D7920 /* Pods-Griete.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Griete.release.xcconfig"; path = "Pods/Target Support Files/Pods-Griete/Pods-Griete.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,7 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				322EFF0F630B40B9A5F2895D /* Pods_Griete.framework in Frameworks */,
+				D693EE842051B70B00C16B8A /* ChameleonFramework.framework in Frameworks */,
+				D693EE7E2051B5A100C16B8A /* Pods_Griete.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +144,8 @@
 		3FCD8DC8F3C0CCD5A26552F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D693EE852051B70B00C16B8A /* ChameleonFramework.framework */,
+				D693EE7F2051B5A100C16B8A /* Pods_Griete.framework */,
 				B9BDDCD66CCEB1986B2DFE1E /* Pods_Griete.framework */,
 				E4D20D1EE6C5391F8C09BB06 /* Pods_GrieteTests.framework */,
 				FB43E51D18D48A2EBC76D7AB /* Pods_GrieteUITests.framework */,
@@ -179,7 +196,6 @@
 				D693EE4820516B8100C16B8A /* Model */,
 				D693EE1A205168FC00C16B8A /* AppDelegate.swift */,
 				D693EE1C205168FC00C16B8A /* ViewController.swift */,
-				D693EE21205168FC00C16B8A /* Assets.xcassets */,
 				D693EE6F20516CC700C16B8A /* Images.xcassets */,
 				D693EE26205168FC00C16B8A /* Info.plist */,
 				D693EE5A20516C1500C16B8A /* GoogleService-Info.plist */,
@@ -251,6 +267,7 @@
 				D693EE15205168FC00C16B8A /* Resources */,
 				5AA9D27F10CD06268D9BD847 /* [CP] Embed Pods Frameworks */,
 				7D0BCDAF3841EA9A9D8DBB36 /* [CP] Copy Pods Resources */,
+				D693EE832051B65F00C16B8A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -359,7 +376,6 @@
 				D693EE25205168FC00C16B8A /* LaunchScreen.storyboard in Resources */,
 				D693EE7020516CC800C16B8A /* Images.xcassets in Resources */,
 				D693EE5B20516C1500C16B8A /* GoogleService-Info.plist in Resources */,
-				D693EE22205168FC00C16B8A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,7 +746,7 @@
 				DEVELOPMENT_TEAM = 9Z34Y633MA;
 				INFOPLIST_FILE = Griete/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.Griete;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarshah.appa.Griete;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -746,7 +762,7 @@
 				DEVELOPMENT_TEAM = 9Z34Y633MA;
 				INFOPLIST_FILE = Griete/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.Griete;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarshah.appa.Griete;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
