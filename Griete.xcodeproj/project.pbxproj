@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D693EE1B205168FC00C16B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE1A205168FC00C16B8A /* AppDelegate.swift */; };
+		D693EE1D205168FC00C16B8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE1C205168FC00C16B8A /* ViewController.swift */; };
+		D693EE20205168FC00C16B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693EE1E205168FC00C16B8A /* Main.storyboard */; };
+		D693EE22205168FC00C16B8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D693EE21205168FC00C16B8A /* Assets.xcassets */; };
+		D693EE25205168FC00C16B8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D693EE23205168FC00C16B8A /* LaunchScreen.storyboard */; };
+		D693EE30205168FD00C16B8A /* GrieteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE2F205168FD00C16B8A /* GrieteTests.swift */; };
+		D693EE3B205168FD00C16B8A /* GrieteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE3A205168FD00C16B8A /* GrieteUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D693EE2C205168FD00C16B8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D693EE0F205168FC00C16B8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D693EE16205168FC00C16B8A;
+			remoteInfo = Griete;
+		};
+		D693EE37205168FD00C16B8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D693EE0F205168FC00C16B8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D693EE16205168FC00C16B8A;
+			remoteInfo = Griete;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D693EE17205168FC00C16B8A /* Griete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Griete.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D693EE1A205168FC00C16B8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D693EE1C205168FC00C16B8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D693EE1F205168FC00C16B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D693EE21205168FC00C16B8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D693EE24205168FC00C16B8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D693EE26205168FC00C16B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D693EE2B205168FD00C16B8A /* GrieteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrieteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D693EE2F205168FD00C16B8A /* GrieteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrieteTests.swift; sourceTree = "<group>"; };
+		D693EE31205168FD00C16B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D693EE36205168FD00C16B8A /* GrieteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrieteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D693EE3A205168FD00C16B8A /* GrieteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrieteUITests.swift; sourceTree = "<group>"; };
+		D693EE3C205168FD00C16B8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D693EE14205168FC00C16B8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D693EE28205168FD00C16B8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D693EE33205168FD00C16B8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D693EE0E205168FC00C16B8A = {
+			isa = PBXGroup;
+			children = (
+				D693EE19205168FC00C16B8A /* Griete */,
+				D693EE2E205168FD00C16B8A /* GrieteTests */,
+				D693EE39205168FD00C16B8A /* GrieteUITests */,
+				D693EE18205168FC00C16B8A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D693EE18205168FC00C16B8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D693EE17205168FC00C16B8A /* Griete.app */,
+				D693EE2B205168FD00C16B8A /* GrieteTests.xctest */,
+				D693EE36205168FD00C16B8A /* GrieteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D693EE19205168FC00C16B8A /* Griete */ = {
+			isa = PBXGroup;
+			children = (
+				D693EE1A205168FC00C16B8A /* AppDelegate.swift */,
+				D693EE1C205168FC00C16B8A /* ViewController.swift */,
+				D693EE1E205168FC00C16B8A /* Main.storyboard */,
+				D693EE21205168FC00C16B8A /* Assets.xcassets */,
+				D693EE23205168FC00C16B8A /* LaunchScreen.storyboard */,
+				D693EE26205168FC00C16B8A /* Info.plist */,
+			);
+			path = Griete;
+			sourceTree = "<group>";
+		};
+		D693EE2E205168FD00C16B8A /* GrieteTests */ = {
+			isa = PBXGroup;
+			children = (
+				D693EE2F205168FD00C16B8A /* GrieteTests.swift */,
+				D693EE31205168FD00C16B8A /* Info.plist */,
+			);
+			path = GrieteTests;
+			sourceTree = "<group>";
+		};
+		D693EE39205168FD00C16B8A /* GrieteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D693EE3A205168FD00C16B8A /* GrieteUITests.swift */,
+				D693EE3C205168FD00C16B8A /* Info.plist */,
+			);
+			path = GrieteUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D693EE16205168FC00C16B8A /* Griete */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D693EE3F205168FD00C16B8A /* Build configuration list for PBXNativeTarget "Griete" */;
+			buildPhases = (
+				D693EE13205168FC00C16B8A /* Sources */,
+				D693EE14205168FC00C16B8A /* Frameworks */,
+				D693EE15205168FC00C16B8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Griete;
+			productName = Griete;
+			productReference = D693EE17205168FC00C16B8A /* Griete.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D693EE2A205168FD00C16B8A /* GrieteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D693EE42205168FD00C16B8A /* Build configuration list for PBXNativeTarget "GrieteTests" */;
+			buildPhases = (
+				D693EE27205168FD00C16B8A /* Sources */,
+				D693EE28205168FD00C16B8A /* Frameworks */,
+				D693EE29205168FD00C16B8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D693EE2D205168FD00C16B8A /* PBXTargetDependency */,
+			);
+			name = GrieteTests;
+			productName = GrieteTests;
+			productReference = D693EE2B205168FD00C16B8A /* GrieteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D693EE35205168FD00C16B8A /* GrieteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D693EE45205168FD00C16B8A /* Build configuration list for PBXNativeTarget "GrieteUITests" */;
+			buildPhases = (
+				D693EE32205168FD00C16B8A /* Sources */,
+				D693EE33205168FD00C16B8A /* Frameworks */,
+				D693EE34205168FD00C16B8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D693EE38205168FD00C16B8A /* PBXTargetDependency */,
+			);
+			name = GrieteUITests;
+			productName = GrieteUITests;
+			productReference = D693EE36205168FD00C16B8A /* GrieteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D693EE0F205168FC00C16B8A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Harshavardhan K";
+				TargetAttributes = {
+					D693EE16205168FC00C16B8A = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					D693EE2A205168FD00C16B8A = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D693EE16205168FC00C16B8A;
+					};
+					D693EE35205168FD00C16B8A = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D693EE16205168FC00C16B8A;
+					};
+				};
+			};
+			buildConfigurationList = D693EE12205168FC00C16B8A /* Build configuration list for PBXProject "Griete" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D693EE0E205168FC00C16B8A;
+			productRefGroup = D693EE18205168FC00C16B8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D693EE16205168FC00C16B8A /* Griete */,
+				D693EE2A205168FD00C16B8A /* GrieteTests */,
+				D693EE35205168FD00C16B8A /* GrieteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D693EE15205168FC00C16B8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D693EE25205168FC00C16B8A /* LaunchScreen.storyboard in Resources */,
+				D693EE22205168FC00C16B8A /* Assets.xcassets in Resources */,
+				D693EE20205168FC00C16B8A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D693EE29205168FD00C16B8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D693EE34205168FD00C16B8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D693EE13205168FC00C16B8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D693EE1D205168FC00C16B8A /* ViewController.swift in Sources */,
+				D693EE1B205168FC00C16B8A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D693EE27205168FD00C16B8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D693EE30205168FD00C16B8A /* GrieteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D693EE32205168FD00C16B8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D693EE3B205168FD00C16B8A /* GrieteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D693EE2D205168FD00C16B8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D693EE16205168FC00C16B8A /* Griete */;
+			targetProxy = D693EE2C205168FD00C16B8A /* PBXContainerItemProxy */;
+		};
+		D693EE38205168FD00C16B8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D693EE16205168FC00C16B8A /* Griete */;
+			targetProxy = D693EE37205168FD00C16B8A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D693EE1E205168FC00C16B8A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D693EE1F205168FC00C16B8A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D693EE23205168FC00C16B8A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D693EE24205168FC00C16B8A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D693EE3D205168FD00C16B8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D693EE3E205168FD00C16B8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D693EE40205168FD00C16B8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z34Y633MA;
+				INFOPLIST_FILE = Griete/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.Griete;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D693EE41205168FD00C16B8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z34Y633MA;
+				INFOPLIST_FILE = Griete/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.Griete;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D693EE43205168FD00C16B8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z34Y633MA;
+				INFOPLIST_FILE = GrieteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.GrieteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Griete.app/Griete";
+			};
+			name = Debug;
+		};
+		D693EE44205168FD00C16B8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z34Y633MA;
+				INFOPLIST_FILE = GrieteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.GrieteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Griete.app/Griete";
+			};
+			name = Release;
+		};
+		D693EE46205168FD00C16B8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z34Y633MA;
+				INFOPLIST_FILE = GrieteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.GrieteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Griete;
+			};
+			name = Debug;
+		};
+		D693EE47205168FD00C16B8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Z34Y633MA;
+				INFOPLIST_FILE = GrieteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tsarsha.apps.GrieteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Griete;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D693EE12205168FC00C16B8A /* Build configuration list for PBXProject "Griete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D693EE3D205168FD00C16B8A /* Debug */,
+				D693EE3E205168FD00C16B8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D693EE3F205168FD00C16B8A /* Build configuration list for PBXNativeTarget "Griete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D693EE40205168FD00C16B8A /* Debug */,
+				D693EE41205168FD00C16B8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D693EE42205168FD00C16B8A /* Build configuration list for PBXNativeTarget "GrieteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D693EE43205168FD00C16B8A /* Debug */,
+				D693EE44205168FD00C16B8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D693EE45205168FD00C16B8A /* Build configuration list for PBXNativeTarget "GrieteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D693EE46205168FD00C16B8A /* Debug */,
+				D693EE47205168FD00C16B8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D693EE0F205168FC00C16B8A /* Project object */;
+}
