@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+import os.log
+
 class ChatListTableViewController: UITableViewController {
     
     var chats: [Friends] = [Friends]()
@@ -25,7 +27,7 @@ class ChatListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.separatorStyle = .none
         
-        loadDummyData()
+        loadData()
         
        
         
@@ -78,7 +80,7 @@ class ChatListTableViewController: UITableViewController {
             print(recentMessage?.messageBody)
             
             if let friend = chat {
-               // print("whats happening?")
+                print("whats happening?")
                 modifyForChatFriend(friend: friend)
                 
             } else {
@@ -86,6 +88,8 @@ class ChatListTableViewController: UITableViewController {
             }
             
             sortChatList()
+            saveChatList()
+           // loadData()
             
         }
     }
@@ -104,19 +108,25 @@ class ChatListTableViewController: UITableViewController {
     }
     
     
-    func loadDummyData() {
+    func loadData() {
         
-        let rum = Friends(name: "Ramathmika")
-        rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45")
-        let mark = Friends(name: "Mark Zuckerberg")
-        mark.recentMessage = Message(sender: "Harsha", message: "Hey", time: "13:45")
-        let roop = Friends(name: "Roopali")
-        roop.recentMessage = Message(sender: "Roopali", message: "Hey there", time: "09:45")
-        
-        chats.append(rum)
-        chats.append(mark)
-        chats.append(roop)
-    
+        if let actualChats = loadChatList() {
+            chats = actualChats
+           // print(chats[0].messages[0].messageBody)
+            
+        } else {
+            
+            let rum = Friends(name: "Ramathmika")
+            rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45")
+            let mark = Friends(name: "Mark Zuckerberg")
+            mark.recentMessage = Message(sender: "Harsha", message: "Hey", time: "13:45")
+            let roop = Friends(name: "Roopali")
+            roop.recentMessage = Message(sender: "Roopali", message: "Hey there", time: "09:45")
+            
+            chats.append(rum)
+            chats.append(mark)
+            chats.append(roop)
+        }
         
     }
     
@@ -128,7 +138,7 @@ class ChatListTableViewController: UITableViewController {
             let time2 = parseTimeStamp(timeStamp: f2.recentMessage.timeStamp)
             print(time1, time2)
             
-            return time1 < time2
+            return time1 > time2
         })
         
         for chat in chats {
@@ -140,8 +150,9 @@ class ChatListTableViewController: UITableViewController {
     private func parseTimeStamp(timeStamp: String) -> Int {
         
         let arr = Array(timeStamp)
-        let minutes = String(arr[3...arr.count-1])
-        let hours = String(arr[0...1])
+        let breakPointIndex = arr.index(of: ":")
+        let minutes = String(arr[breakPointIndex! + 1...breakPointIndex! + 2])
+        let hours = String(arr[0...breakPointIndex! - 1])
         let timeString = hours + minutes
         let time = Int(timeString)
         
@@ -165,6 +176,23 @@ class ChatListTableViewController: UITableViewController {
        // print(chats[index].recentMessage.messageBody)
         tableView.reloadData()
     }
+    
+    //MARK: saveChatList: Saves current chat list state
+    private func saveChatList() {
+        
+        let successfulSave = NSKeyedArchiver.archiveRootObject(chats, toFile: Friends.archiveURL.path)
+        
+        if successfulSave {
+            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadChatList() -> [Friends]? {
+        return (NSKeyedUnarchiver.unarchiveObject(withFile: Friends.archiveURL.path) as? [Friends])
+    }
+    
 }
 
 

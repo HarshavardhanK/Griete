@@ -8,8 +8,13 @@
 import Foundation
 import os.log
 
+struct PropertyKey {
+    static let messages = "messages"
+    static let name = "name"
+    static let recentMessage = "recentMessage"
+}
 
-class Friends  {
+class Friends: NSObject, NSCoding  {
     
     var messages: [Message] = [Message]()
     var name: String = ""
@@ -25,7 +30,29 @@ class Friends  {
         self.recentMessage = messages[messages.count - 1]
     }
     
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(messages, forKey: PropertyKey.messages)
+        aCoder.encode(name, forKey: PropertyKey.name)
+        aCoder.encode(recentMessage, forKey: PropertyKey.recentMessage)
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        
+        guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String else {
+            fatalError("Cannot decode object!")
+            return nil
+        }
+        
+        let messages = aDecoder.decodeObject(forKey: PropertyKey.messages) as! [Message]
+        let recentMessage = aDecoder.decodeObject(forKey: PropertyKey.recentMessage) as! Message
+        
+        self.messages = messages
+        self.recentMessage = recentMessage
+        self.name = name
+    }
+    
+    static let archive = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let archiveURL = archive.appendingPathComponent("chatList")
     
     
 }

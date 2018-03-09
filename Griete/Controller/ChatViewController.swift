@@ -51,6 +51,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //TODO: Register your MessageCell.xib file here:
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         configureTableView()
+       // loadMessages()
         retrieveMessages()
         
         messageTableView.separatorStyle = .none
@@ -67,11 +68,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         databaseChildReferenceForChat = friend.name + finalEmail
         print(databaseChildReferenceForChat)
         
-        
+        reloadData()
 
     }
 
-    ///////////////////////////////////////////
+    //MARK: Scroll down to bottom delegate method
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let lastRowIndex = tableView.numberOfRows(inSection: 0)
+        
+        if indexPath.row == lastRowIndex - 1 {
+            tableView.scrollToBottom(animated: true)
+        }
+    }
     
     
     
@@ -153,6 +163,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
         
+        reloadData()
+        
     }
 
     //MARK: - Send & Recieve from Firebase
@@ -192,7 +204,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //TODO: Create the retrieveMessages method here:
-    func retrieveMessages() {
+    
+    private func loadMessages() {
+        messages = friend.messages
+        reloadData()
+    }
+    
+    private func retrieveMessages() {
         
         let messagesDB = Database.database().reference().child(friend.name)
         //observe for event type child added
@@ -207,13 +225,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.messages.append(message)
             
             self.finalText = self.messages[self.messages.count - 1]
-            print("Final text is", self.finalText)
+           // print("Final text is", self.finalText)
             
             self.configureTableView()
-            self.messageTableView.reloadData()
+            self.reloadData()
             
             print(text, sender)
         }
+        
+        friend.messages = messages
         
     }
     
@@ -231,7 +251,44 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    private func reloadData(){
+        
+        messageTableView.reloadData()
+        
+        DispatchQueue.global(qos: .background).async {
+            
+            print("This is run on the background queue")
+            
+            DispatchQueue.main.async {
+                
+                if self.messageTableView.contentSize.height > self.messageTableView.frame.size.height {
+                    
+                    let scrollPoint = CGPoint(x: 0, y: self.messageTableView.contentSize.height - self.messageTableView.frame.size.height)
+                    self.messageTableView.setContentOffset(scrollPoint, animated: true)
+
+                }
+                
+            }
+            
+        }
+        
+    }
     
-   
     
+    
+    
+} // class ends here
+
+extension UITableView {
+    
+    func scrollToBottom(animated: Bool = true) {
+        
+        let sections = self.numberOfSections
+        let rows = self.numberOfRows(inSection: sections - 1)
+        
+        if (rows > 0) {
+            
+            self.scrollToRow(at: NSIndexPath(row: rows - 1, section: sections - 1) as IndexPath, at: .bottom, animated: true)
+        }
+    }
 }
