@@ -54,6 +54,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
        // loadMessages()
         retrieveMessages()
         
+        navigationItem.title = friend.name
+        
         messageTableView.separatorStyle = .none
         messageTableView.backgroundColor = UIColor.clear
         messageTableView.backgroundView = UIImageView(image: UIImage(named: "ChatBackground"))
@@ -146,8 +148,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.heightConstraint.constant = 50 + 258 // 258 is the height of the keyboard
             self.view.layoutIfNeeded()
+            
+            self.reloadData()
 
         }
+        
+        
     }
     
     
@@ -161,9 +167,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.heightConstraint.constant = 50  // 258 is the height of the keyboard
             self.view.layoutIfNeeded()
             
+             self.reloadData()
         }
         
-        reloadData()
+       
         
     }
 
@@ -200,6 +207,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.messageTextfield.isEnabled = true
         self.sendButton.isEnabled = true
         messageTextfield.text = ""
+        
+        reloadData()
         
     }
     
@@ -263,8 +272,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 if self.messageTableView.contentSize.height > self.messageTableView.frame.size.height {
                     
-                    let scrollPoint = CGPoint(x: 0, y: self.messageTableView.contentSize.height - self.messageTableView.frame.size.height)
+                    let scrollPoint = CGPoint(x: 0, y: self.messageTableView.contentSize.height - self.messageTableView.frame.size.height - self.heightConstraint.constant)
                     self.messageTableView.setContentOffset(scrollPoint, animated: true)
+                    
+                    self.view.layoutIfNeeded()
 
                 }
                 
