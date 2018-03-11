@@ -100,7 +100,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //let messageArray = ["What", "The", "Fuck"]
         cell.messageBody.text = messages[indexPath.row].messageBody
         cell.senderUsername.text = messages[indexPath.row].sender
-        cell.avatarImageView.image = UIImage(named: "egg")
+        cell.avatarImageView.image = UIImage(named: "default-profile")
         cell.timeStamp.text = messages[indexPath.row].timeStamp
         cell.backgroundColor = UIColor.clear
        
@@ -169,8 +169,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
              self.reloadData()
         }
-        
-       
         
     }
 

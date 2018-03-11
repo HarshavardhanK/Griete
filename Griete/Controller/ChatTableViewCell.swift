@@ -12,6 +12,7 @@ class ChatTableViewCell: UITableViewCell {
 
     @IBOutlet weak var recentTextLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

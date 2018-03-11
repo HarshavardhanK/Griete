@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -152,7 +153,7 @@
             </objects>
             <point key="canvasLocation" x="34" y="437"/>
         </scene>
-        <!--Chat List Table View Controller-->
+        <!--Chats-->
         <scene sceneID="PWq-LF-tAv">
             <objects>
                 <tableViewController id="kzq-bY-9ri" customClass="ChatListTableViewController" customModule="Griete" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,23 +170,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjz-2V-wgD">
-                                            <rect key="frame" x="16" y="11" width="343" height="29"/>
+                                            <rect key="frame" x="80" y="11" width="279" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey whats up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXn-oW-OG0">
-                                            <rect key="frame" x="56" y="38" width="303" height="21"/>
+                                            <rect key="frame" x="80" y="38" width="279" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Yj-sh-96L">
+                                            <rect key="frame" x="8" y="0.0" width="64" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="sjz-2V-wgD" id="lQh-zp-WYZ"/>
+                                    <outlet property="profilePicture" destination="0Yj-sh-96L" id="8Uj-I7-hhN"/>
                                     <outlet property="recentTextLabel" destination="LXn-oW-OG0" id="1lC-4t-MWp"/>
                                     <segue destination="vXZ-lx-hvc" kind="push" identifier="goToChat" id="4c5-a7-u5r"/>
                                 </connections>
@@ -196,7 +203,18 @@
                             <outlet property="delegate" destination="kzq-bY-9ri" id="sZZ-mu-3Sj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aoP-Fg-y5n"/>
+                    <navigationItem key="navigationItem" title="Chats" id="aoP-Fg-y5n">
+                        <barButtonItem key="leftBarButtonItem" title="Add Friend" id="N9P-aH-LPd">
+                            <connections>
+                                <segue destination="mDs-Kr-DVr" kind="push" identifier="addFriend" id="e3t-aV-VWs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="sTC-XG-YQU">
+                            <connections>
+                                <segue destination="4cs-mU-JBk" kind="push" identifier="profile" id="xID-lA-q98"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBg-9i-wC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -279,6 +297,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewD-vV-GoZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="34" y="-378"/>
+        </scene>
+        <!--Add Friend-->
+        <scene sceneID="Spq-bh-Q0t">
+            <objects>
+                <viewController id="mDs-Kr-DVr" customClass="AddFriendViewController" customModule="Griete" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rkn-u6-kk8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tg3-pE-6Ge"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C1P-jC-ao9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Friend" id="k2L-TO-D4e"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CUD-m8-BSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="877"/>
+        </scene>
+        <!--Edit Profile-->
+        <scene sceneID="Jhj-QS-G2z">
+            <objects>
+                <viewController id="4cs-mU-JBk" customClass="EditProfileViewController" customModule="Griete" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jt5-kT-gQ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Yp-I8-XBn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Efd-Dr-jfO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="default-profile" translatesAutoresizingMaskIntoConstraints="NO" id="qq2-cS-fi9">
+                                <rect key="frame" x="16" y="122" width="343" height="260"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grJ-RZ-R8g">
+                                <rect key="frame" x="126" y="390" width="123" height="30"/>
+                                <state key="normal" title="Set Profile Picture"/>
+                                <connections>
+                                    <action selector="setProfilePicture:" destination="4cs-mU-JBk" eventType="touchUpInside" id="1l8-go-KfT"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EZk-wF-rue">
+                                <rect key="frame" x="77" y="463" width="220" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="Efd-Dr-jfO" secondAttribute="centerX" id="1wY-XU-QEC"/>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="qq2-cS-fi9" secondAttribute="bottom" constant="8" id="6jg-4z-C4f"/>
+                            <constraint firstItem="EZk-wF-rue" firstAttribute="centerX" secondItem="grJ-RZ-R8g" secondAttribute="centerX" id="BSp-hL-FXw"/>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="qq2-cS-fi9" secondAttribute="centerX" id="E3S-8N-c0k"/>
+                            <constraint firstItem="qq2-cS-fi9" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" id="LhO-eM-6pD"/>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="qq2-cS-fi9" secondAttribute="bottom" constant="8" symbolic="YES" id="V2N-pe-lFD"/>
+                            <constraint firstItem="qq2-cS-fi9" firstAttribute="top" secondItem="Jt5-kT-gQ8" secondAttribute="bottom" constant="58" id="atm-Xa-9YO"/>
+                            <constraint firstItem="EZk-wF-rue" firstAttribute="top" secondItem="grJ-RZ-R8g" secondAttribute="bottom" constant="43" id="ent-fs-cMP"/>
+                            <constraint firstItem="EZk-wF-rue" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" constant="61" id="kR0-VA-igS"/>
+                            <constraint firstItem="3Yp-I8-XBn" firstAttribute="top" secondItem="grJ-RZ-R8g" secondAttribute="bottom" constant="247" id="kye-cK-kRN"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="I5r-iL-55G" appends="YES" id="xh4-Ni-TsS"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="umQ-1Z-D6l"/>
+                    <connections>
+                        <outlet property="profilePictureImageView" destination="qq2-cS-fi9" id="dj6-7n-tA1"/>
+                        <outlet property="userNameTextField" destination="EZk-wF-rue" id="yxW-0h-2H2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8je-1v-UqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I5r-iL-55G">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="4cs-mU-JBk" id="5AI-dr-Bag"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1174.5" y="-499.5"/>
         </scene>
         <!--Flash Chat-->
         <scene sceneID="ufC-wZ-h7g">
@@ -373,7 +472,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <exit id="xrP-fz-YYk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="12"/>
+            <point key="canvasLocation" x="1622" y="12"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kGX-IT-aXC">
@@ -401,6 +500,7 @@
         <image name="RegisterImage" width="375" height="667"/>
         <image name="Sign In" width="49" height="13"/>
         <image name="background1" width="1800" height="1192"/>
+        <image name="default-profile" width="376" height="376"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XD3-FE-6Uh"/>

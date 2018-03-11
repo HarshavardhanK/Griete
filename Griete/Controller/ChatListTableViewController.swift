@@ -26,6 +26,8 @@ class ChatListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.separatorStyle = .none
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "ChatBackground")!)
+        //tableView.backgroundColor = UIColor.clear
         
         loadData()
         
@@ -58,6 +60,8 @@ class ChatListTableViewController: UITableViewController {
         
         cell.nameLabel.text = chats[indexPath.row].name
         cell.recentTextLabel.text = chats[indexPath.row].recentMessage.messageBody
+        cell.profilePicture.image = chats[indexPath.row].profilePicture
+        cell.backgroundColor = UIColor.clear
 
         return cell
     }
@@ -96,14 +100,24 @@ class ChatListTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
         if segue.identifier == "goToChat" {
             
             if let chatViewController = segue.destination as? ChatViewController {
                 print("Segueing to chat view!")
                 chatViewController.friend = chats[(tableView.indexPathForSelectedRow?.row)!]
+                
             }
+            
+        } else if segue.identifier == "profile" {
+            
+            
+        } else if segue.identifier == "addFriend" {
+            
+            
         }
     }
     

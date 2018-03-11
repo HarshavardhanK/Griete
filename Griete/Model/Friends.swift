@@ -7,11 +7,14 @@
 
 import Foundation
 import os.log
+import UIKit
 
 struct PropertyKey {
+    
     static let messages = "messages"
     static let name = "name"
     static let recentMessage = "recentMessage"
+    static let profilePicture = "profilePicture"
 }
 
 class Friends: NSObject, NSCoding  {
@@ -19,6 +22,7 @@ class Friends: NSObject, NSCoding  {
     var messages: [Message] = [Message]()
     var name: String = ""
     var recentMessage: Message!
+    var profilePicture: UIImage?
     
     init(name: String) {
         
@@ -30,10 +34,17 @@ class Friends: NSObject, NSCoding  {
         self.recentMessage = messages[messages.count - 1]
     }
     
+    func setProfilePicture(pic: UIImage) {
+        self.profilePicture = pic
+    }
+    
     func encode(with aCoder: NSCoder) {
+        
         aCoder.encode(messages, forKey: PropertyKey.messages)
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(recentMessage, forKey: PropertyKey.recentMessage)
+        aCoder.encode(profilePicture, forKey: PropertyKey.profilePicture)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,6 +56,14 @@ class Friends: NSObject, NSCoding  {
         
         let messages = aDecoder.decodeObject(forKey: PropertyKey.messages) as! [Message]
         let recentMessage = aDecoder.decodeObject(forKey: PropertyKey.recentMessage) as! Message
+        
+        if let profilePicture = aDecoder.decodeObject(forKey: PropertyKey.profilePicture) as? UIImage {
+            self.profilePicture = profilePicture
+            
+        } else {
+            self.profilePicture = UIImage(named: "default-profile")
+
+        }
         
         self.messages = messages
         self.recentMessage = recentMessage
