@@ -16,6 +16,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
     
+    var userDefaults = UserDefaults.standard
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +47,23 @@ class RegisterViewController: UIViewController {
             }
         }
         
-
-        
+        print(emailTextfield.text!)
+        saveCurrentUser(emailAddress: emailTextfield.text!)
+    
         
     }
     
-    
+    func saveCurrentUser(emailAddress: String) {
+        
+        let thisUser = Friends(name: "", email: emailAddress)
+        let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: thisUser)
+        
+        userDefaults.set(encodedUser, forKey: "currentUser")
+        userDefaults.synchronize()
+        
+        print(thisUser.emailAddress)
+        
+    }
     
     
 }

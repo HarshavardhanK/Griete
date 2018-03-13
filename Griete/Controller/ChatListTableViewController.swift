@@ -115,6 +115,7 @@ class ChatListTableViewController: UITableViewController {
         } else if segue.identifier == "profile" {
             
             
+            
         } else if segue.identifier == "addFriend" {
             
             
@@ -130,11 +131,11 @@ class ChatListTableViewController: UITableViewController {
             
         } else {
             
-            let rum = Friends(name: "Ramathmika")
+            let rum = Friends(name: "Ramathmika", email: "ramathmikavs1999@gmail.com")
             rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45")
-            let mark = Friends(name: "Mark Zuckerberg")
+            let mark = Friends(name: "Mark Zuckerberg", email: "something@fb.com")
             mark.recentMessage = Message(sender: "Harsha", message: "Hey", time: "13:45")
-            let roop = Friends(name: "Roopali")
+            let roop = Friends(name: "Roopali", email: "roopsh@gmail.com")
             roop.recentMessage = Message(sender: "Roopali", message: "Hey there", time: "09:45")
             
             chats.append(rum)

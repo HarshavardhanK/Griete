@@ -13,18 +13,22 @@ import SVProgressHUD
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     var user: Friends!
+    let userDefaults = UserDefaults.standard
     
     //MARK: Profile Picture IBOutlets
 
     @IBOutlet weak var profilePictureImageView: UIImageView!
     
+    @IBAction func saveUserName(_ sender: Any) {
+    }
+    
     @IBAction func setProfilePicture(_ sender: UIButton) {
         
         SVProgressHUD.show()
         
+        print(user.name)
         let profileDB = Database.database().reference().child(user.name + "-profile")
         let profileObject: Dictionary<String, Any> = ["ProfilePicture": user.profilePicture!, "Username": user.name]
-        
         profileDB.setValue(profileObject)
         print("Successfully set!")
         
@@ -39,6 +43,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 
         // Do any additional setup after loading the view.
         userNameTextField.delegate = self
+        loadUser()
+        setUserName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +59,21 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Textfield delegate methods
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userNameTextField.resignFirstResponder()
+        return true
+    }
+    
+    
      @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         // The info dictionary may contain multiple representations of the image. You want to use the original.
@@ -62,6 +83,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         // Set photoImageView to display the selected image.
         profilePictureImageView.image = selectedImage
+        user.profilePicture = profilePictureImageView.image
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
@@ -94,5 +116,17 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func loadUser() {
+        
+        let userDecoded = userDefaults.object(forKey: "currentUser") as! Data
+        user = NSKeyedUnarchiver.unarchiveObject(with: userDecoded) as! Friends
+        
+        print(user.emailAddress)
+    }
+    
+    func setUserName() {
+        user.name = userNameTextField.text!
+    }
 
 }

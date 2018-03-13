@@ -330,35 +330,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="default-profile" translatesAutoresizingMaskIntoConstraints="NO" id="qq2-cS-fi9">
-                                <rect key="frame" x="16" y="122" width="343" height="260"/>
+                                <rect key="frame" x="16" y="64" width="343" height="230"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grJ-RZ-R8g">
-                                <rect key="frame" x="126" y="390" width="123" height="30"/>
+                                <rect key="frame" x="126" y="302" width="123" height="30"/>
                                 <state key="normal" title="Set Profile Picture"/>
                                 <connections>
                                     <action selector="setProfilePicture:" destination="4cs-mU-JBk" eventType="touchUpInside" id="1l8-go-KfT"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EZk-wF-rue">
-                                <rect key="frame" x="77" y="463" width="220" height="30"/>
+                                <rect key="frame" x="77" y="340" width="220" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge1-fZ-ucG">
+                                <rect key="frame" x="313" y="340" width="46" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveUserName:" destination="4cs-mU-JBk" eventType="touchUpInside" id="bi1-IO-Zzh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="Efd-Dr-jfO" secondAttribute="centerX" id="1wY-XU-QEC"/>
-                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="qq2-cS-fi9" secondAttribute="bottom" constant="8" id="6jg-4z-C4f"/>
-                            <constraint firstItem="EZk-wF-rue" firstAttribute="centerX" secondItem="grJ-RZ-R8g" secondAttribute="centerX" id="BSp-hL-FXw"/>
-                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="qq2-cS-fi9" secondAttribute="centerX" id="E3S-8N-c0k"/>
-                            <constraint firstItem="qq2-cS-fi9" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" id="LhO-eM-6pD"/>
-                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="qq2-cS-fi9" secondAttribute="bottom" constant="8" symbolic="YES" id="V2N-pe-lFD"/>
-                            <constraint firstItem="qq2-cS-fi9" firstAttribute="top" secondItem="Jt5-kT-gQ8" secondAttribute="bottom" constant="58" id="atm-Xa-9YO"/>
-                            <constraint firstItem="EZk-wF-rue" firstAttribute="top" secondItem="grJ-RZ-R8g" secondAttribute="bottom" constant="43" id="ent-fs-cMP"/>
-                            <constraint firstItem="EZk-wF-rue" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" constant="61" id="kR0-VA-igS"/>
-                            <constraint firstItem="3Yp-I8-XBn" firstAttribute="top" secondItem="grJ-RZ-R8g" secondAttribute="bottom" constant="247" id="kye-cK-kRN"/>
+                            <constraint firstItem="qq2-cS-fi9" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" id="0ZH-ap-RzQ"/>
+                            <constraint firstItem="3Yp-I8-XBn" firstAttribute="top" secondItem="ge1-fZ-ucG" secondAttribute="bottom" constant="297" id="5uR-GE-IjA"/>
+                            <constraint firstItem="ge1-fZ-ucG" firstAttribute="top" secondItem="Jt5-kT-gQ8" secondAttribute="bottom" constant="276" id="ADJ-fZ-27A"/>
+                            <constraint firstItem="EZk-wF-rue" firstAttribute="top" secondItem="grJ-RZ-R8g" secondAttribute="bottom" constant="8" symbolic="YES" id="B7g-hC-BXx"/>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="qq2-cS-fi9" secondAttribute="centerX" id="Dht-Dg-aVp"/>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="Efd-Dr-jfO" secondAttribute="centerX" id="Uee-Vl-GGU"/>
+                            <constraint firstItem="ge1-fZ-ucG" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leading" constant="313" id="afq-Aa-Gvz"/>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="Efd-Dr-jfO" secondAttribute="top" constant="302" id="dBt-hc-onn"/>
+                            <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="qq2-cS-fi9" secondAttribute="bottom" constant="8" symbolic="YES" id="eOz-YD-9wj"/>
+                            <constraint firstAttribute="trailing" secondItem="ge1-fZ-ucG" secondAttribute="trailing" constant="16" id="hol-R7-T79"/>
+                            <constraint firstItem="EZk-wF-rue" firstAttribute="centerX" secondItem="grJ-RZ-R8g" secondAttribute="centerX" id="idg-AR-d5c"/>
+                            <constraint firstItem="EZk-wF-rue" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" constant="61" id="jOa-iZ-XGc"/>
+                            <constraint firstItem="qq2-cS-fi9" firstAttribute="top" secondItem="Jt5-kT-gQ8" secondAttribute="bottom" id="xXD-0X-PWy"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="I5r-iL-55G" appends="YES" id="xh4-Ni-TsS"/>

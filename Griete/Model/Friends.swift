@@ -15,6 +15,7 @@ struct PropertyKey {
     static let name = "name"
     static let recentMessage = "recentMessage"
     static let profilePicture = "profilePicture"
+    static let emailAddress = "emailAddress"
 }
 
 class Friends: NSObject, NSCoding  {
@@ -23,8 +24,9 @@ class Friends: NSObject, NSCoding  {
     var name: String = ""
     var recentMessage: Message!
     var profilePicture: UIImage?
+    var emailAddress: String
     
-    init(name: String) {
+    init(name: String, email: String) {
         
         let message = Message(sender: "abc", message: "Using Griete!", time: "10:10")
         messages.append(message)
@@ -32,6 +34,7 @@ class Friends: NSObject, NSCoding  {
         self.name = name
         //self.messages = messages
         self.recentMessage = messages[messages.count - 1]
+        self.emailAddress = email
     }
     
     func setProfilePicture(pic: UIImage) {
@@ -44,18 +47,20 @@ class Friends: NSObject, NSCoding  {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(recentMessage, forKey: PropertyKey.recentMessage)
         aCoder.encode(profilePicture, forKey: PropertyKey.profilePicture)
+        aCoder.encode(emailAddress, forKey: PropertyKey.emailAddress)
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         
-        guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String else {
+        guard let emailAddress = aDecoder.decodeObject(forKey: PropertyKey.emailAddress) as? String else {
             fatalError("Cannot decode object!")
             return nil
         }
         
         let messages = aDecoder.decodeObject(forKey: PropertyKey.messages) as! [Message]
         let recentMessage = aDecoder.decodeObject(forKey: PropertyKey.recentMessage) as! Message
+        let name = aDecoder.decodeObject(forKey: PropertyKey.name) as! String
         
         if let profilePicture = aDecoder.decodeObject(forKey: PropertyKey.profilePicture) as? UIImage {
             self.profilePicture = profilePicture
@@ -68,6 +73,7 @@ class Friends: NSObject, NSCoding  {
         self.messages = messages
         self.recentMessage = recentMessage
         self.name = name
+        self.emailAddress = emailAddress
     }
     
     static let archive = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
