@@ -346,7 +346,10 @@
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge1-fZ-ucG">
-                                <rect key="frame" x="313" y="340" width="46" height="30"/>
+                                <rect key="frame" x="164" y="378" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="9Gb-ql-AID"/>
+                                </constraints>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveUserName:" destination="4cs-mU-JBk" eventType="touchUpInside" id="bi1-IO-Zzh"/>
@@ -357,17 +360,15 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qq2-cS-fi9" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" id="0ZH-ap-RzQ"/>
-                            <constraint firstItem="3Yp-I8-XBn" firstAttribute="top" secondItem="ge1-fZ-ucG" secondAttribute="bottom" constant="297" id="5uR-GE-IjA"/>
-                            <constraint firstItem="ge1-fZ-ucG" firstAttribute="top" secondItem="Jt5-kT-gQ8" secondAttribute="bottom" constant="276" id="ADJ-fZ-27A"/>
                             <constraint firstItem="EZk-wF-rue" firstAttribute="top" secondItem="grJ-RZ-R8g" secondAttribute="bottom" constant="8" symbolic="YES" id="B7g-hC-BXx"/>
                             <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="qq2-cS-fi9" secondAttribute="centerX" id="Dht-Dg-aVp"/>
                             <constraint firstItem="grJ-RZ-R8g" firstAttribute="centerX" secondItem="Efd-Dr-jfO" secondAttribute="centerX" id="Uee-Vl-GGU"/>
-                            <constraint firstItem="ge1-fZ-ucG" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leading" constant="313" id="afq-Aa-Gvz"/>
                             <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="Efd-Dr-jfO" secondAttribute="top" constant="302" id="dBt-hc-onn"/>
                             <constraint firstItem="grJ-RZ-R8g" firstAttribute="top" secondItem="qq2-cS-fi9" secondAttribute="bottom" constant="8" symbolic="YES" id="eOz-YD-9wj"/>
-                            <constraint firstAttribute="trailing" secondItem="ge1-fZ-ucG" secondAttribute="trailing" constant="16" id="hol-R7-T79"/>
+                            <constraint firstItem="ge1-fZ-ucG" firstAttribute="top" secondItem="EZk-wF-rue" secondAttribute="bottom" constant="8" symbolic="YES" id="hmr-ID-40D"/>
                             <constraint firstItem="EZk-wF-rue" firstAttribute="centerX" secondItem="grJ-RZ-R8g" secondAttribute="centerX" id="idg-AR-d5c"/>
                             <constraint firstItem="EZk-wF-rue" firstAttribute="leading" secondItem="Efd-Dr-jfO" secondAttribute="leadingMargin" constant="61" id="jOa-iZ-XGc"/>
+                            <constraint firstItem="ge1-fZ-ucG" firstAttribute="centerX" secondItem="EZk-wF-rue" secondAttribute="centerX" id="pbf-ct-e4X"/>
                             <constraint firstItem="qq2-cS-fi9" firstAttribute="top" secondItem="Jt5-kT-gQ8" secondAttribute="bottom" id="xXD-0X-PWy"/>
                         </constraints>
                         <connections>

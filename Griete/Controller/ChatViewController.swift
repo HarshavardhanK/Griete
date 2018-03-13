@@ -19,7 +19,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var databaseChildReferenceForChat: String = ""
     var finalText: Message?
     
-    
+    //MARK: User Defaults
+    var userDefaults = UserDefaults.standard
     // Declare instance variables here
     var messages: [Message] = [Message]()
 
@@ -61,15 +62,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTableView.backgroundView = UIImageView(image: UIImage(named: "ChatBackground"))
         
         //Database child reference
-        //Something here is not working. FIX LATER
-        let email = (Auth.auth().currentUser?.email)!
-        print(email)
-        let emailIndexWithoutEnding = email.index(email.endIndex, offsetBy: -10)
-        let finalEmail = email.prefix(upTo: emailIndexWithoutEnding)
-        print(finalEmail)
-        databaseChildReferenceForChat = friend.name + finalEmail
-        print(databaseChildReferenceForChat)
-        
+       
         reloadData()
 
     }
@@ -255,6 +248,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         } catch {
             print(error)
         }
+        
+        userDefaults.removeObject(forKey: "currentUser")
+        userDefaults.synchronize()
         
     }
     

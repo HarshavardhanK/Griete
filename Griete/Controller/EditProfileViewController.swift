@@ -20,6 +20,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var profilePictureImageView: UIImageView!
     
     @IBAction func saveUserName(_ sender: Any) {
+        user.name = userNameTextField.text!
+        saveCurrentUser(username: user.name)
     }
     
     @IBAction func setProfilePicture(_ sender: UIButton) {
@@ -44,7 +46,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         // Do any additional setup after loading the view.
         userNameTextField.delegate = self
         loadUser()
-        setUserName()
+        userNameTextField.placeholder = user.name ?? "Username"
+        //setUserName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,16 +120,26 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     */
     
+    func saveCurrentUser(username: String) {
+        
+       // let thisUser = Friends(name: username, email: emailAddress)
+        user.name = username
+        let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: user)
+        
+        userDefaults.set(encodedUser, forKey: "currentUser")
+        userDefaults.synchronize()
+        
+        print(user.name)
+        
+    }
+
+    
     func loadUser() {
         
         let userDecoded = userDefaults.object(forKey: "currentUser") as! Data
         user = NSKeyedUnarchiver.unarchiveObject(with: userDecoded) as! Friends
         
         print(user.emailAddress)
-    }
-    
-    func setUserName() {
-        user.name = userNameTextField.text!
     }
 
 }
