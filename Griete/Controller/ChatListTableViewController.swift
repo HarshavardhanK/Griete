@@ -97,6 +97,17 @@ class ChatListTableViewController: UITableViewController {
             
         }
     }
+    
+    @IBAction func unwindFromAddFriend(sender: UIStoryboardSegue) {
+        
+        if let sourceViewController = sender.source as? AddFriendViewController {
+            
+            let friend = sourceViewController.friend
+            chats.append(friend!)
+            
+            saveChatList()
+        }
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

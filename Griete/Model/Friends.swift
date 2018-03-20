@@ -26,6 +26,7 @@ class Friends: NSObject, NSCoding  {
     var profilePicture: UIImage?
     var emailAddress: String
     
+    
     init(name: String, email: String) {
         
         let message = Message(sender: "abc", message: "Using Griete!", time: "10:10")

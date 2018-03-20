@@ -47,7 +47,7 @@ class RegisterViewController: UIViewController {
             }
         }
         
-        print(emailTextfield.text!)
+        //print(emailTextfield.text!)
         saveCurrentUser(emailAddress: emailTextfield.text!)
     
         

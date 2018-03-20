@@ -10,6 +10,9 @@ import Firebase
 import SVProgressHUD
 
 class LogInViewController: UIViewController {
+    
+    let userDefaults = UserDefaults.standard
+    var user: Friends!
 
     //Textfields pre-linked with IBOutlets
     @IBOutlet var emailTextfield: UITextField!
@@ -42,10 +45,21 @@ class LogInViewController: UIViewController {
             }
         }
         
-        
+        saveCurrentUser(emailAddress: emailTextfield.text!)
         
     }
     
+    func saveCurrentUser(emailAddress: String) {
+        
+        let thisUser = Friends(name: "", email: emailAddress)
+        let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: thisUser)
+        
+        userDefaults.set(encodedUser, forKey: "currentUser")
+        userDefaults.synchronize()
+        
+        print(thisUser.emailAddress)
+        
+    }
 
 
     
