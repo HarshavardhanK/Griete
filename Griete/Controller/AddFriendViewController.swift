@@ -14,20 +14,19 @@ class AddFriendViewController: UIViewController, UITextFieldDelegate {
     let userDefaults = UserDefaults.standard
     //var user: Friends!
     var friend: Friends!
-
-    @IBOutlet weak var emailTextField: UITextField!
+    
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBAction func addFriend(_ sender: UIButton) {
         
-        print(friend.emailAddress)
+        friend = Friends(name: nameTextField.text!, email: "something")
+        print(friend.name)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.delegate = self
         nameTextField.delegate = self
 
         // Do any additional setup after loading the view.
@@ -42,6 +41,13 @@ class AddFriendViewController: UIViewController, UITextFieldDelegate {
     //MARK:- Add Friend UITextField Delegate methods
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Should return called")
+        nameTextField.resignFirstResponder()
+        return true
     }
     
     
@@ -51,13 +57,10 @@ class AddFriendViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        textField.resignFirstResponder()
-        
-        if textField.tag == 1 {
-           friend.name = textField.text!
-        } else {
-            friend.emailAddress = textField.text!
-        }
+       // nameTextField.resignFirstResponder()
+        print("Something is happening")
+        navigationItem.title = nameTextField.text ?? "Something"
+       // print("Name", nameTextField.text!)
     }
     
 
@@ -75,15 +78,4 @@ class AddFriendViewController: UIViewController, UITextFieldDelegate {
 }
 
 
-extension Character {
-    
-    var asciiValue: Int {
-        
-        get {
-            
-            let s = String(self).unicodeScalars
-            return Int(s[s.startIndex].value)
-        }
-        
-    }
-}
+

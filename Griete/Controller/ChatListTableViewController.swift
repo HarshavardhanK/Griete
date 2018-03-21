@@ -106,6 +106,7 @@ class ChatListTableViewController: UITableViewController {
             chats.append(friend!)
             
             saveChatList()
+            
         }
     }
 
@@ -136,12 +137,12 @@ class ChatListTableViewController: UITableViewController {
     
     func loadData() {
         
-        //if let actualChats = loadChatList() {
-        //    chats = actualChats
+        if let actualChats = loadChatList() {
+            chats = actualChats
            // print(chats[0].messages[0].messageBody)
-            
-      //  } else {
-            
+
+        } else {
+        
             let rum = Friends(name: "Ramathmika", email: "ramathmikavs1999@gmail.com")
             rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45")
             let mark = Friends(name: "Mark Zuckerberg", email: "something@fb.com")
@@ -152,7 +153,7 @@ class ChatListTableViewController: UITableViewController {
             chats.append(rum)
             chats.append(mark)
             chats.append(roop)
-      //  }
+        }
         
     }
     

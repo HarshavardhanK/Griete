@@ -310,12 +310,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your friend's registered email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkf-w7-SoA">
-                                <rect key="frame" x="16" y="202" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjH-1e-RjB">
                                 <rect key="frame" x="164" y="251" width="46" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -337,15 +331,9 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="pkf-w7-SoA" firstAttribute="trailing" secondItem="C1P-jC-ao9" secondAttribute="trailingMargin" id="63U-9N-eXZ"/>
-                            <constraint firstItem="pkf-w7-SoA" firstAttribute="top" secondItem="rkn-u6-kk8" secondAttribute="bottom" constant="138" id="7dS-1Y-HZi"/>
-                            <constraint firstItem="pkf-w7-SoA" firstAttribute="leading" secondItem="C1P-jC-ao9" secondAttribute="leadingMargin" id="Gho-i3-NrB"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Friend" id="k2L-TO-D4e"/>
                     <connections>
-                        <outlet property="emailTextField" destination="pkf-w7-SoA" id="8A0-QE-hyd"/>
                         <outlet property="nameTextField" destination="4N6-Ms-Nkm" id="MNP-5h-mux"/>
                     </connections>
                 </viewController>

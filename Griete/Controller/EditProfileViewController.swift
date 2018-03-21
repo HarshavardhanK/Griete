@@ -122,8 +122,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     func saveCurrentUser(username: String) {
         
-       // let thisUser = Friends(name: username, email: emailAddress)
-        user.name = username
+        let thisUser = Friends(name: username, email: "emailAddress")
+       // user.name = username
         let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: user)
         
         userDefaults.set(encodedUser, forKey: "currentUser")

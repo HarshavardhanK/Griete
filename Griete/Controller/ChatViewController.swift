@@ -21,6 +21,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: User Defaults
     var userDefaults = UserDefaults.standard
+    var user: Friends!
     // Declare instance variables here
     var messages: [Message] = [Message]()
 
@@ -62,7 +63,44 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTableView.backgroundView = UIImageView(image: UIImage(named: "ChatBackground"))
         
         //Database child reference
-       
+        
+        loadUser()
+        
+        var ref: String {
+            
+            let combinedName = user.name + friend.name
+            var this = ""
+            
+            for c in combinedName {
+                this += String(c)
+            }
+            
+            return this
+        }
+        
+//        databaseChildReferenceForChat = {
+//
+//            var asciiString = "a"
+//
+//            for r in ref {
+//                asciiString += String(r.asciiValue)
+//            }
+//
+//            return asciiString + "z"
+//        }()
+        
+        databaseChildReferenceForChat = {
+            
+            var rref = Array(ref)
+            rref.sort(by: {$0 < $1})
+            
+            return String(rref)
+
+            
+        }()
+        
+        print(ref)
+        print(databaseChildReferenceForChat)
         reloadData()
 
     }
@@ -148,8 +186,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
     }
-    
-    
     
     //TODO: Declare textFieldDidEndEditing here:
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -279,7 +315,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
+    //MARK: Load user in ChatViewController
+    func loadUser() {
+        
+        let userDecoded = userDefaults.object(forKey: "currentUser") as! Data
+        user = NSKeyedUnarchiver.unarchiveObject(with: userDecoded) as! Friends
+        
+        print(user.name)
+    }
     
     
 } // class ends here
@@ -295,5 +338,18 @@ extension UITableView {
             
             self.scrollToRow(at: NSIndexPath(row: rows - 1, section: sections - 1) as IndexPath, at: .bottom, animated: true)
         }
+    }
+}
+
+extension Character {
+    
+    var asciiValue: Int {
+        
+        get {
+            
+            let s = String(self).unicodeScalars
+            return Int(s[s.startIndex].value)
+        }
+        
     }
 }
