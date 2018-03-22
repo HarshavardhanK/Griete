@@ -114,6 +114,12 @@
                                             <segue destination="kzq-bY-9ri" kind="push" id="XD3-FE-6Uh"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QL4-Uw-pSR">
+                                        <rect key="frame" x="16" y="51" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="67C-Ey-AV3" firstAttribute="leading" secondItem="ffX-Mv-79o" secondAttribute="leading" constant="16" id="8Zz-Te-nzS"/>
@@ -121,10 +127,13 @@
                                     <constraint firstAttribute="trailing" secondItem="SYb-Xx-USU" secondAttribute="trailing" constant="16" id="AGn-Pb-wvl"/>
                                     <constraint firstAttribute="centerX" secondItem="SYb-Xx-USU" secondAttribute="centerX" id="AWf-fZ-SkT"/>
                                     <constraint firstItem="67C-Ey-AV3" firstAttribute="top" secondItem="SYb-Xx-USU" secondAttribute="bottom" constant="8" id="CYn-61-z8A"/>
+                                    <constraint firstItem="QL4-Uw-pSR" firstAttribute="trailing" secondItem="M1R-HS-xgc" secondAttribute="trailing" id="Pb0-QG-HL6"/>
                                     <constraint firstAttribute="height" constant="284" id="Qtz-9r-DVq"/>
                                     <constraint firstAttribute="trailing" secondItem="M1R-HS-xgc" secondAttribute="trailing" constant="16" id="SP8-GG-W4w"/>
                                     <constraint firstItem="M1R-HS-xgc" firstAttribute="top" secondItem="ffX-Mv-79o" secondAttribute="top" constant="89" id="T9l-Cm-ShN"/>
+                                    <constraint firstItem="M1R-HS-xgc" firstAttribute="top" secondItem="QL4-Uw-pSR" secondAttribute="bottom" constant="8" symbolic="YES" id="WEy-3P-g1M"/>
                                     <constraint firstAttribute="centerY" secondItem="SYb-Xx-USU" secondAttribute="centerY" id="XLm-uC-uNN"/>
+                                    <constraint firstItem="QL4-Uw-pSR" firstAttribute="leading" secondItem="M1R-HS-xgc" secondAttribute="leading" id="gHS-FR-1Yw"/>
                                     <constraint firstAttribute="trailing" secondItem="67C-Ey-AV3" secondAttribute="trailing" constant="16" id="l0R-re-ZgI"/>
                                     <constraint firstItem="SYb-Xx-USU" firstAttribute="leading" secondItem="ffX-Mv-79o" secondAttribute="leading" constant="16" id="lNX-iA-dOK"/>
                                     <constraint firstItem="SYb-Xx-USU" firstAttribute="top" secondItem="M1R-HS-xgc" secondAttribute="bottom" constant="8" id="oLi-xF-oi0"/>
@@ -147,11 +156,12 @@
                     <connections>
                         <outlet property="emailTextfield" destination="M1R-HS-xgc" id="EZN-co-Khq"/>
                         <outlet property="passwordTextfield" destination="SYb-Xx-USU" id="pWb-Ds-G8q"/>
+                        <outlet property="usernameTextfield" destination="QL4-Uw-pSR" id="ave-gN-geK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMZ-W7-skD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34" y="437"/>
+            <point key="canvasLocation" x="33.5" y="436.5"/>
         </scene>
         <!--Chats-->
         <scene sceneID="PWq-LF-tAv">

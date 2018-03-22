@@ -15,10 +15,11 @@ class RegisterViewController: UIViewController {
 
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
+    @IBOutlet weak var usernameTextfield: UITextField!
+    
+    var thisUser: Friends!
     
     var userDefaults = UserDefaults.standard
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,21 @@ class RegisterViewController: UIViewController {
             }
         }
         
+        let usersDatabase = Database.database().reference().child("users")
+        
+        thisUser = Friends(name: usernameTextfield.text!, email: emailTextfield.text!)
+        
+        let userDictionary = ["User": thisUser]
+        usersDatabase.childByAutoId().setValue(userDictionary) {
+            
+            (error, reference) in
+            if error != nil {
+                print(error)
+            } else {
+                
+            }
+        }
+        
         //print(emailTextfield.text!)
         saveCurrentUser(emailAddress: emailTextfield.text!)
     
@@ -55,7 +71,6 @@ class RegisterViewController: UIViewController {
     
     func saveCurrentUser(emailAddress: String) {
         
-        let thisUser = Friends(name: "", email: emailAddress)
         let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: thisUser)
         
         userDefaults.set(encodedUser, forKey: "currentUser")

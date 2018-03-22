@@ -54,7 +54,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         configureTableView()
        // loadMessages()
-        retrieveMessages()
+        
         
         navigationItem.title = friend.name
         
@@ -101,6 +101,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         print(ref)
         print(databaseChildReferenceForChat)
+        
+        retrieveMessages()
+        
         reloadData()
 
     }
@@ -218,7 +221,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let message = Message(sender: (Auth.auth().currentUser?.email)!, message: messageTextfield.text!, time: timeStamp)
 
-        let messagesDB = Database.database().reference().child(friend.name)
+        let messagesDB = Database.database().reference().child(databaseChildReferenceForChat)
         let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!, "TimeStamp": timeStamp]
         
         messagesDB.childByAutoId().setValue(messageDictionary) {
@@ -248,7 +251,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func retrieveMessages() {
         
-        let messagesDB = Database.database().reference().child(friend.name)
+        let messagesDB = Database.database().reference().child(databaseChildReferenceForChat)
         //observe for event type child added
         messagesDB.observe(.childAdded) { (snapshot) in
             
