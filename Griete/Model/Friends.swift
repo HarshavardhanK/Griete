@@ -29,7 +29,7 @@ class Friends: NSObject, NSCoding  {
     
     init(name: String, email: String) {
         
-        let message = Message(sender: "abc", message: "Using Griete!", time: "10:10")
+        let message = Message(sender: "abc", message: "Using Griete!", time: "10:10", sentTime: "10:10:10")
         messages.append(message)
         
         self.name = name

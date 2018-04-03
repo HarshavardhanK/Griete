@@ -18,6 +18,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var friend: Friends!
     var databaseChildReferenceForChat: String = ""
     var finalText: Message?
+    var messageSent: Bool = false
+    var sentTime: String = ""
     
     //MARK: User Defaults
     var userDefaults = UserDefaults.standard
@@ -64,11 +66,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //Database child reference
         
-        loadUser()
+       // loadUser()
         
         var ref: String {
             
-            let combinedName = user.name + friend.name
+            let combinedName = friend.name
             var this = ""
             
             for c in combinedName {
@@ -119,8 +121,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    
     //MARK: - TableView DataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -168,13 +168,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    ///////////////////////////////////////////
-    
-    //MARK:- TextField Delegate Methods
-    
-    
-
-    
     //TODO: Declare textFieldDidBeginEditing here:
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
@@ -186,7 +179,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.reloadData()
 
         }
-        
         
     }
     
@@ -210,19 +202,36 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let date = Date()
         let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
+        var hour = String(calendar.component(.hour, from: date))
+        var minutes = String(calendar.component(.minute, from: date))
+        var seconds = String(calendar.component(.second, from: date))
         
-        let timeStamp = "\(hour):\(minutes)"
+        var day = String(calendar.component(.day, from: date))
+        var month = String(calendar.component(.month, from: date))
+        let year = String(calendar.component(.year, from: date))
+        
+        messageSent = true
+        
+        minutes = cleanDate(time: minutes)
+        hour = cleanDate(time: hour)
+        seconds = cleanDate(time: seconds)
+        
+        day = cleanDate(time: day)
+        month = cleanDate(time: month)
+        
+        let thisDay = day + month + year
+
+        sentTime = thisDay + hour + minutes + seconds
+        print(sentTime)
+
+        let timeStamp = "\(hour):\(minutes):\(seconds)"
         print(timeStamp)
         
         messageTextfield.isEnabled = false
         sendButton.isEnabled = false
-        
-        let message = Message(sender: (Auth.auth().currentUser?.email)!, message: messageTextfield.text!, time: timeStamp)
 
         let messagesDB = Database.database().reference().child(databaseChildReferenceForChat)
-        let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!, "TimeStamp": timeStamp]
+        let messageDictionary = ["Sender": Auth.auth().currentUser?.email, "MessageBody": messageTextfield.text!, "TimeStamp": timeStamp, "sentTime":sentTime]
         
         messagesDB.childByAutoId().setValue(messageDictionary) {
             
@@ -258,9 +267,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let snapshotValue = snapshot.value as! Dictionary<String, String>
             let text = snapshotValue["MessageBody"]!
             let sender = snapshotValue["Sender"]!
-            let timeStamp = snapshotValue["TimeStamp"] ?? "\(10):\(10)"
+            let timeStamp = snapshotValue["TimeStamp"] ?? "10:10:10"
+            var messageSentTime: String
             
-            let message = Message(sender: sender, message: text, time: timeStamp)
+            if let SentTime = snapshotValue["sentTime"]  {
+                messageSentTime = SentTime
+            } else {
+                messageSentTime = "02042018101010"
+            }
+            
+            print(messageSentTime)
+            
+            let message = Message(sender: sender, message: text, time: timeStamp, sentTime: messageSentTime)
             self.messages.append(message)
             
             self.finalText = self.messages[self.messages.count - 1]
@@ -321,10 +339,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: Load user in ChatViewController
     func loadUser() {
         
-        let userDecoded = userDefaults.object(forKey: "currentUser") as! Data
+        let userDecoded = userDefaults.object(forKey: "thisUser") as! Data
         user = NSKeyedUnarchiver.unarchiveObject(with: userDecoded) as! Friends
         
         print(user.name)
+    }
+    
+    private func cleanDate(time: String) -> String {
+        
+        var cleanTime: String = ""
+        
+        if Int(time)! / 10 < 1 {
+            cleanTime = "0" + String(time)
+            
+        } else {
+            return time
+        }
+        
+        return cleanTime
+
     }
     
     

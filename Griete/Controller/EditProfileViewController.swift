@@ -20,7 +20,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var profilePictureImageView: UIImageView!
     
     @IBAction func saveUserName(_ sender: Any) {
-        user.name = userNameTextField.text!
+        user = Friends(name: userNameTextField.text!, email: " ")
         saveCurrentUser(username: user.name)
     }
     
@@ -45,8 +45,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 
         // Do any additional setup after loading the view.
         userNameTextField.delegate = self
-        loadUser()
-        userNameTextField.placeholder = user.name ?? "Username"
+       // loadUser()
+        userNameTextField.placeholder = "Username"
         //setUserName()
     }
 
@@ -126,7 +126,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
        // user.name = username
         let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: user)
         
-        userDefaults.set(encodedUser, forKey: "currentUser")
+        userDefaults.set(encodedUser, forKey: "thisUser")
         userDefaults.synchronize()
         
         print(user.name)
@@ -136,7 +136,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     func loadUser() {
         
-        let userDecoded = userDefaults.object(forKey: "currentUser") as! Data
+        let userDecoded = userDefaults.object(forKey: "thisUser") as! Data
         user = NSKeyedUnarchiver.unarchiveObject(with: userDecoded) as! Friends
         
         print(user.emailAddress)

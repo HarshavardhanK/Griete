@@ -137,56 +137,123 @@ class ChatListTableViewController: UITableViewController {
     
     func loadData() {
         
-        if let actualChats = loadChatList() {
-            chats = actualChats
-           // print(chats[0].messages[0].messageBody)
-
-        } else {
+//        if let actualChats = loadChatList() {
+//            chats = actualChats
+//           // print(chats[0].messages[0].messageBody)
+//
+//        } else {
         
             let rum = Friends(name: "Ramathmika", email: "ramathmikavs1999@gmail.com")
-            rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45")
+        rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45", sentTime: "0304115604")
             let mark = Friends(name: "Mark Zuckerberg", email: "something@fb.com")
-            mark.recentMessage = Message(sender: "Harsha", message: "Hey", time: "13:45")
+            mark.recentMessage = Message(sender: "Harsha", message: "Hey", time: "13:45",sentTime: "0304115602")
             let roop = Friends(name: "Roopali", email: "roopsh@gmail.com")
-            roop.recentMessage = Message(sender: "Roopali", message: "Hey there", time: "09:45")
+            roop.recentMessage = Message(sender: "Roopali", message: "Hey there", time: "09:45", sentTime: "0304115607")
             
             chats.append(rum)
             chats.append(mark)
             chats.append(roop)
-        }
+       // }
         
     }
     
     private func sortChatList() {
+        
+        var currentTime: Int = 0
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        var hour = String(calendar.component(.hour, from: date))
+        var minutes = String(calendar.component(.minute, from: date))
+        var seconds = String(calendar.component(.second, from: date))
+        
+        var day = String(calendar.component(.day, from: date))
+        var month = String(calendar.component(.month, from: date))
+        let year = String(calendar.component(.year, from: date))
+        
+        minutes = cleanDate(time: minutes)
+        hour = cleanDate(time: hour)
+        seconds = cleanDate(time: seconds)
+        
+        day = cleanDate(time: day)
+        month = cleanDate(time: month)
+        
+        let thisDay = day + month + year
+        
+        currentTime = Int(thisDay + hour + minutes + seconds)!
+        print(currentTime)
        
          chats.sort(by: { (f1: Friends, f2: Friends) -> Bool in
             
-            let time1 = parseTimeStamp(timeStamp: f1.recentMessage.timeStamp)
-            let time2 = parseTimeStamp(timeStamp: f2.recentMessage.timeStamp)
-            print(time1, time2)
+            let time1 = Int(f1.recentMessage.sentTime)!
+            let time2 = Int(f2.recentMessage.sentTime)!
+
+            print(currentTime-time1, currentTime-time2
+)
             
-            return time1 > time2
+            return currentTime-time1 < currentTime-time2
         })
-        
-        for chat in chats {
-            print(chat.name)
-        }
         
      }
     
     private func parseTimeStamp(timeStamp: String) -> Int {
         
+        var timeString: String
+        
         let arr = Array(timeStamp)
+        
         let breakPointIndex = arr.index(of: ":")
-        let minutes = String(arr[breakPointIndex! + 1...breakPointIndex! + 2])
+        var secondBreakPoint = -1
+        
+        var minutes = ""
+        
+        if arr.count > 5 {
+            
+            secondBreakPoint = secondOccurence(timeStamp: arr)
+            minutes = String(arr[breakPointIndex! + 1...secondBreakPoint-1])
+            
+            print(secondBreakPoint)
+            
+        } else {
+            minutes = String(arr[breakPointIndex! + 1...arr.count - 1])
+
+        }
+        
         let hours = String(arr[0...breakPointIndex! - 1])
-        let timeString = hours + minutes
+        
+        if secondBreakPoint != -1 {
+            let seconds = String(arr[secondBreakPoint+1...arr.count-1])
+            timeString = hours + minutes + seconds
+            
+        } else {
+            timeString = hours + minutes
+
+        }
+        
         let time = Int(timeString)
         
         return time!
     }
     
-     func modifyForChatFriend(friend: Friends)  {
+    private func secondOccurence(timeStamp: Array<Character>) -> Int {
+        
+        var count = 0
+        
+        for c in 0..<timeStamp.count {
+            if timeStamp[c] == ":" {
+                count += 1
+            }
+            
+            if count == 2 {
+                return c
+            }
+        }
+        
+        return -1
+    }
+    
+    private func modifyForChatFriend(friend: Friends)  {
         
         var index = 0
         
@@ -218,6 +285,18 @@ class ChatListTableViewController: UITableViewController {
     
     private func loadChatList() -> [Friends]? {
         return (NSKeyedUnarchiver.unarchiveObject(withFile: Friends.archiveURL.path) as? [Friends])
+    }
+    
+    private func cleanDate(time: String) -> String {
+        
+        var cleanTime: String = ""
+        
+        if Int(time)! / 10 < 1 {
+            cleanTime = "0" + String(time)
+        }
+        
+        return cleanTime
+        
     }
     
 }

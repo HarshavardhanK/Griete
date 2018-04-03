@@ -7,9 +7,12 @@ import Foundation
 import os.log
 
 struct PropertyKey2 {
+    
     static let sender = "sender"
     static let messageBody = "messageBody"
     static let timeStamp = "timeStamp"
+    static let sentTime = "sentTime"
+    
 }
 
 class Message: NSObject, NSCoding {
@@ -17,12 +20,15 @@ class Message: NSObject, NSCoding {
     //TODO: Messages need a messageBody and a sender variable
     var sender: String = "ABC"
     var messageBody: String = "Hey"
-    var timeStamp: String = "10:10"
+    var timeStamp: String = "10:10:10"
+    var sentTime: String
     
-    init(sender: String, message: String, time: String) {
+    init(sender: String, message: String, time: String, sentTime: String) {
+        
         self.sender = sender
         self.messageBody = message
         self.timeStamp = time
+        self.sentTime = sentTime
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -34,8 +40,9 @@ class Message: NSObject, NSCoding {
         
         let messageBody = aDecoder.decodeObject(forKey: PropertyKey2.messageBody) as! String
         let timeStamp = aDecoder.decodeObject(forKey: PropertyKey2.timeStamp) as! String
-        
-        self.init(sender: sender, message: messageBody, time: timeStamp)
+        let sentTime = aDecoder.decodeObject(forKey: PropertyKey2.sentTime) as! String
+
+        self.init(sender: sender, message: messageBody, time: timeStamp, sentTime: sentTime)
         
     }
     
@@ -44,6 +51,7 @@ class Message: NSObject, NSCoding {
         aCoder.encode(sender, forKey: PropertyKey2.sender)
         aCoder.encode(messageBody, forKey: PropertyKey2.messageBody)
         aCoder.encode(timeStamp, forKey: PropertyKey2.timeStamp)
+        aCoder.encode(sentTime, forKey: PropertyKey2.sentTime)
     }
     
 }

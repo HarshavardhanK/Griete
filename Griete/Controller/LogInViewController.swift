@@ -54,7 +54,7 @@ class LogInViewController: UIViewController {
         let thisUser = Friends(name: "", email: emailAddress)
         let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: thisUser)
         
-        userDefaults.set(encodedUser, forKey: "currentUser")
+        userDefaults.set(encodedUser, forKey: "thisUser")
         userDefaults.synchronize()
         
         print(thisUser.emailAddress)
