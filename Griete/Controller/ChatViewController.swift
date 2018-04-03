@@ -15,6 +15,9 @@ import os.log
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
+    //currentTime
+    var currentTime: Int = 0
+    
     var friend: Friends!
     var databaseChildReferenceForChat: String = ""
     var finalText: Message?
@@ -35,18 +38,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var messageTableView: UITableView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        getCurrentTime()
         
         //TODO: Set yourself as the delegate and datasource here:
         messageTableView.delegate = self
         messageTableView.dataSource = self
         
-        
         //TODO: Set yourself as the delegate of the text field here:
         messageTextfield.delegate = self
 
-        
-        
         //TODO: Set the tapGesture here:
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
@@ -56,7 +59,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         configureTableView()
        // loadMessages()
-        
         
         navigationItem.title = friend.name
         
@@ -80,17 +82,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return this
         }
         
-//        databaseChildReferenceForChat = {
-//
-//            var asciiString = "a"
-//
-//            for r in ref {
-//                asciiString += String(r.asciiValue)
-//            }
-//
-//            return asciiString + "z"
-//        }()
-        
         databaseChildReferenceForChat = {
             
             var rref = Array(ref)
@@ -98,7 +89,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             return String(rref)
 
-            
         }()
         
         print(ref)
@@ -138,8 +128,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.timeStamp.text = messages[indexPath.row].timeStamp
         cell.backgroundColor = UIColor.clear
        
-        
         if cell.senderUsername.text == Auth.auth().currentUser?.email as String! {
+            
             //Messages we went
             cell.avatarImageView.backgroundColor = UIColor.flatMint()
             cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
@@ -150,10 +140,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.messageBackground.backgroundColor = UIColor.flatGray()
         }
         
-        
         return cell
     }
-    
     
     //TODO: Declare tableViewTapped here:
     @objc func tableViewTapped() {
@@ -236,8 +224,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messagesDB.childByAutoId().setValue(messageDictionary) {
             
             (error, reference) in
+            
             if error != nil {
                 print(error)
+                
             } else {
                 
             }
@@ -294,7 +284,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-
     @IBAction func logOutPressed(_ sender: AnyObject) {
         
         //TODO: Log out the user and send them back to WelcomeViewController
@@ -358,6 +347,32 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cleanTime
 
+    }
+    
+    private func getCurrentTime() {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        var hour = String(calendar.component(.hour, from: date))
+        var minutes = String(calendar.component(.minute, from: date))
+        var seconds = String(calendar.component(.second, from: date))
+        
+        var day = String(calendar.component(.day, from: date))
+        var month = String(calendar.component(.month, from: date))
+        let year = String(calendar.component(.year, from: date))
+        
+        minutes = cleanDate(time: minutes)
+        hour = cleanDate(time: hour)
+        seconds = cleanDate(time: seconds)
+        
+        day = cleanDate(time: day)
+        month = cleanDate(time: month)
+        
+        let thisDay = day + month + year
+        
+        currentTime = Int(thisDay + hour + minutes + seconds)!
+        
     }
     
     

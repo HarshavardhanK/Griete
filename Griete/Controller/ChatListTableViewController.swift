@@ -15,6 +15,7 @@ class ChatListTableViewController: UITableViewController {
     
     var chats: [Friends] = [Friends]()
     var chat: Friends?
+    var currentTime: Int = 0
 
     override func viewDidLoad() {
         
@@ -82,6 +83,8 @@ class ChatListTableViewController: UITableViewController {
             chat?.recentMessage = recentMessage
            // print("unwound!")
             print(recentMessage?.messageBody)
+            
+            currentTime = sourceViewController.currentTime
             
             if let friend = chat {
                 print("whats happening?")
@@ -159,38 +162,12 @@ class ChatListTableViewController: UITableViewController {
     
     private func sortChatList() {
         
-        var currentTime: Int = 0
-        
-        let date = Date()
-        let calendar = Calendar.current
-        
-        var hour = String(calendar.component(.hour, from: date))
-        var minutes = String(calendar.component(.minute, from: date))
-        var seconds = String(calendar.component(.second, from: date))
-        
-        var day = String(calendar.component(.day, from: date))
-        var month = String(calendar.component(.month, from: date))
-        let year = String(calendar.component(.year, from: date))
-        
-        minutes = cleanDate(time: minutes)
-        hour = cleanDate(time: hour)
-        seconds = cleanDate(time: seconds)
-        
-        day = cleanDate(time: day)
-        month = cleanDate(time: month)
-        
-        let thisDay = day + month + year
-        
-        currentTime = Int(thisDay + hour + minutes + seconds)!
-        print(currentTime)
-       
          chats.sort(by: { (f1: Friends, f2: Friends) -> Bool in
             
             let time1 = Int(f1.recentMessage.sentTime)!
             let time2 = Int(f2.recentMessage.sentTime)!
 
-            print(currentTime-time1, currentTime-time2
-)
+            print(currentTime-time1, currentTime-time2)
             
             return currentTime-time1 < currentTime-time2
         })
