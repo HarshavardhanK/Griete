@@ -12,7 +12,7 @@ import SVProgressHUD
 class LogInViewController: UIViewController {
     
     let userDefaults = UserDefaults.standard
-    var user: Friends!
+    var username: String = ""
 
     //Textfields pre-linked with IBOutlets
     @IBOutlet var emailTextfield: UITextField!
@@ -45,22 +45,52 @@ class LogInViewController: UIViewController {
             }
         }
         
-        saveCurrentUser(emailAddress: emailTextfield.text!)
+        fetchUserName(emailAddress: emailTextfield.text!)
         
     }
     
-    func saveCurrentUser(emailAddress: String) {
+    private func saveCurrentUser(emailAddress: String) {
         
-        let thisUser = Friends(name: "", email: emailAddress)
+        print("Username in saveUsr", username)
+        
+        let thisUser = Friends(name: username, email: emailAddress)
         let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: thisUser)
         
         userDefaults.set(encodedUser, forKey: "thisUser")
         userDefaults.synchronize()
         
-        print(thisUser.emailAddress)
+        //print(thisUser.name)
+        
+        //print(thisUser.emailAddress)
+        
+        
+    }
+    
+    private func fetchUserName(emailAddress: String) {
+        
+        let usersDB = Database.database().reference().child("users")
+        let cleanMail = cleanEmailAddress(email: emailAddress)
+        //print("Cleaned", cleanMail)
+        
+        usersDB.observe(.childAdded) { (snapshot) in
+            
+            SVProgressHUD.show()
+            
+            let snapshotValue = snapshot.value as! Dictionary<String, String>
+            print("Username is", snapshotValue[cleanMail]!)
+            
+            if let userName = snapshotValue[cleanMail] {
+                self.username = userName
+            } else {
+                print("Not fetching")
+            }
+            
+            self.saveCurrentUser(emailAddress: emailAddress)
+            
+            SVProgressHUD.dismiss()
+        }
+        
         
     }
 
-
-    
 }  

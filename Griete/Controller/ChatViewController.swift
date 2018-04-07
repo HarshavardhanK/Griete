@@ -41,7 +41,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewDidLoad()
         
-        getCurrentTime()
+        currentTime = getCurrentTime()
         
         //TODO: Set yourself as the delegate and datasource here:
         messageTableView.delegate = self
@@ -68,11 +68,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //Database child reference
         
-       // loadUser()
+        loadUser()
         
         var ref: String {
             
-            let combinedName = friend.name
+            let combinedName = user.name + friend.name
             var this = ""
             
             for c in combinedName {
@@ -334,73 +334,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(user.name)
     }
     
-    private func cleanDate(time: String) -> String {
-        
-        var cleanTime: String = ""
-        
-        if Int(time)! / 10 < 1 {
-            cleanTime = "0" + String(time)
-            
-        } else {
-            return time
-        }
-        
-        return cleanTime
-
-    }
     
-    private func getCurrentTime() {
-        
-        let date = Date()
-        let calendar = Calendar.current
-        
-        var hour = String(calendar.component(.hour, from: date))
-        var minutes = String(calendar.component(.minute, from: date))
-        var seconds = String(calendar.component(.second, from: date))
-        
-        var day = String(calendar.component(.day, from: date))
-        var month = String(calendar.component(.month, from: date))
-        let year = String(calendar.component(.year, from: date))
-        
-        minutes = cleanDate(time: minutes)
-        hour = cleanDate(time: hour)
-        seconds = cleanDate(time: seconds)
-        
-        day = cleanDate(time: day)
-        month = cleanDate(time: month)
-        
-        let thisDay = day + month + year
-        
-        currentTime = Int(thisDay + hour + minutes + seconds)!
-        
-    }
+    
     
     
 } // class ends here
 
-extension UITableView {
-    
-    func scrollToBottom(animated: Bool = true) {
-        
-        let sections = self.numberOfSections
-        let rows = self.numberOfRows(inSection: sections - 1)
-        
-        if (rows > 0) {
-            
-            self.scrollToRow(at: NSIndexPath(row: rows - 1, section: sections - 1) as IndexPath, at: .bottom, animated: true)
-        }
-    }
-}
 
-extension Character {
-    
-    var asciiValue: Int {
-        
-        get {
-            
-            let s = String(self).unicodeScalars
-            return Int(s[s.startIndex].value)
-        }
-        
-    }
-}

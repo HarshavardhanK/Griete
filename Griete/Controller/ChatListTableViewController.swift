@@ -140,11 +140,11 @@ class ChatListTableViewController: UITableViewController {
     
     func loadData() {
         
-//        if let actualChats = loadChatList() {
-//            chats = actualChats
-//           // print(chats[0].messages[0].messageBody)
-//
-//        } else {
+        if let actualChats = loadChatList() {
+            chats = actualChats
+           // print(chats[0].messages[0].messageBody)
+
+        } else {
         
             let rum = Friends(name: "Ramathmika", email: "ramathmikavs1999@gmail.com")
         rum.recentMessage = Message(sender: "Harsha", message: "Sup", time: "12:45", sentTime: "0304115604")
@@ -156,7 +156,7 @@ class ChatListTableViewController: UITableViewController {
             chats.append(rum)
             chats.append(mark)
             chats.append(roop)
-       // }
+        }
         
     }
     
@@ -174,62 +174,7 @@ class ChatListTableViewController: UITableViewController {
         
      }
     
-    private func parseTimeStamp(timeStamp: String) -> Int {
-        
-        var timeString: String
-        
-        let arr = Array(timeStamp)
-        
-        let breakPointIndex = arr.index(of: ":")
-        var secondBreakPoint = -1
-        
-        var minutes = ""
-        
-        if arr.count > 5 {
-            
-            secondBreakPoint = secondOccurence(timeStamp: arr)
-            minutes = String(arr[breakPointIndex! + 1...secondBreakPoint-1])
-            
-            print(secondBreakPoint)
-            
-        } else {
-            minutes = String(arr[breakPointIndex! + 1...arr.count - 1])
-
-        }
-        
-        let hours = String(arr[0...breakPointIndex! - 1])
-        
-        if secondBreakPoint != -1 {
-            let seconds = String(arr[secondBreakPoint+1...arr.count-1])
-            timeString = hours + minutes + seconds
-            
-        } else {
-            timeString = hours + minutes
-
-        }
-        
-        let time = Int(timeString)
-        
-        return time!
-    }
-    
-    private func secondOccurence(timeStamp: Array<Character>) -> Int {
-        
-        var count = 0
-        
-        for c in 0..<timeStamp.count {
-            if timeStamp[c] == ":" {
-                count += 1
-            }
-            
-            if count == 2 {
-                return c
-            }
-        }
-        
-        return -1
-    }
-    
+   
     private func modifyForChatFriend(friend: Friends)  {
         
         var index = 0

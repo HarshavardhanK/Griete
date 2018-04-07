@@ -28,6 +28,7 @@ class AddFriendViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         nameTextField.delegate = self
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "RegisterLoginBackground")!)
 
         // Do any additional setup after loading the view.
         //loadUser()

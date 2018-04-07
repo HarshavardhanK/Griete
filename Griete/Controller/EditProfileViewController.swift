@@ -44,10 +44,19 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         userNameTextField.delegate = self
-       // loadUser()
-        userNameTextField.placeholder = "Username"
-        //setUserName()
+        loadUser()
+        
+        if let thisUser = user {
+            userNameTextField.placeholder = thisUser.name
+            
+        } else {
+            userNameTextField.placeholder = "Username"
+        }
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "RegisterLoginBackground")!)
+
     }
 
     override func didReceiveMemoryWarning() {

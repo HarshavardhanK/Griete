@@ -12,6 +12,7 @@
 		D611CAAE2054162500DA27CE /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611CAAC2054162500DA27CE /* AddFriendViewController.swift */; };
 		D611CAB02054163500DA27CE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611CAAF2054163500DA27CE /* EditProfileViewController.swift */; };
 		D611CAB12054163500DA27CE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611CAAF2054163500DA27CE /* EditProfileViewController.swift */; };
+		D6470A2220789DA10078035D /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6470A2120789DA10078035D /* HelperMethods.swift */; };
 		D67873322054EA7C00321210 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67873312054EA7C00321210 /* Profile.swift */; };
 		D67873332054EA7C00321210 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67873312054EA7C00321210 /* Profile.swift */; };
 		D693EE1B205168FC00C16B8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693EE1A205168FC00C16B8A /* AppDelegate.swift */; };
@@ -88,6 +89,7 @@
 		D2D48EB5A1D1F0DB63FB221B /* Pods-Griete.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Griete.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Griete/Pods-Griete.debug.xcconfig"; sourceTree = "<group>"; };
 		D611CAAC2054162500DA27CE /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		D611CAAF2054163500DA27CE /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		D6470A2120789DA10078035D /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 		D67873312054EA7C00321210 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		D693EE17205168FC00C16B8A /* Griete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Griete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D693EE1A205168FC00C16B8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		D693EE19205168FC00C16B8A /* Griete */ = {
 			isa = PBXGroup;
 			children = (
+				D6470A2120789DA10078035D /* HelperMethods.swift */,
 				D693EE4A20516B8D00C16B8A /* Controller */,
 				D693EE4920516B8800C16B8A /* View */,
 				D693EE4820516B8100C16B8A /* Model */,
@@ -578,6 +581,7 @@
 			files = (
 				D611CAB02054163500DA27CE /* EditProfileViewController.swift in Sources */,
 				D611CAAD2054162500DA27CE /* AddFriendViewController.swift in Sources */,
+				D6470A2220789DA10078035D /* HelperMethods.swift in Sources */,
 				D693EE1D205168FC00C16B8A /* ViewController.swift in Sources */,
 				D67873322054EA7C00321210 /* Profile.swift in Sources */,
 				D693EE6720516C4B00C16B8A /* RegisterViewController.swift in Sources */,

@@ -52,7 +52,8 @@ class RegisterViewController: UIViewController {
         
         thisUser = Friends(name: usernameTextfield.text!, email: emailTextfield.text!)
         
-        let userDictionary = ["User": thisUser]
+        let userDictionary = [cleanEmailAddress(email: thisUser.emailAddress): thisUser.name]
+        
         usersDatabase.childByAutoId().setValue(userDictionary) {
             
             (error, reference) in
@@ -73,12 +74,12 @@ class RegisterViewController: UIViewController {
         
         let encodedUser: Data = NSKeyedArchiver.archivedData(withRootObject: thisUser)
         
-        userDefaults.set(encodedUser, forKey: "currentUser")
+        userDefaults.set(encodedUser, forKey: "thisUser")
         userDefaults.synchronize()
         
-        print(thisUser.emailAddress)
+        //print(thisUser.emailAddress)
         
     }
-    
+
     
 }
