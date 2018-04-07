@@ -212,7 +212,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         sentTime = thisDay + hour + minutes + seconds
         print(sentTime)
 
-        let timeStamp = "\(hour):\(minutes):\(seconds)"
+        let timeStamp = "\(hour):\(minutes)"
         print(timeStamp)
         
         messageTextfield.isEnabled = false
