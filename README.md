@@ -1,6 +1,8 @@
 # Griete
 An iOS texting application using Firebase
 
+(95% done)
+
 Look here, I'm talking to Thanos! :} Lets Griete him, shall we?
 
 
